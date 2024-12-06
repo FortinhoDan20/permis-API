@@ -18,7 +18,7 @@ app.use(express.urlencoded({ extended: false }))
 
 
 app.get('/', async (req, res, next) => {
-    res.send('WELCOME TO OUR GARAGE MANAGEMENT API !!!')
+    res.send('WELCOME TO OUR PERMIT API !!!')
 })
 
 app.use('/api-type-user', require('./routes/typeUser'))
