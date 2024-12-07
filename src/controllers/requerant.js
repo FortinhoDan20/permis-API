@@ -89,11 +89,9 @@ const getDetails = asyncHandler(async (req, res) => {
   }
 });
 
-const getAllRequerantsNA = asyncHandler(async (req, res) => {
+const getAllRequerants = asyncHandler(async (req, res) => {
   try {
-    const requerants = await Requerant.find({ isPaid: false }).populate([
-      "categorie",
-    ]);
+    const requerants = await Requerant.find();
 
     res.status(200).json({
       error: false,
@@ -107,28 +105,6 @@ const getAllRequerantsNA = asyncHandler(async (req, res) => {
   }
 });
 
-const getAllRequerantsAP = asyncHandler(async (req, res) => {
-  try {
-    const requerants = await Requerant.find({ isPaid: true }).populate([
-      "categorie",
-    ]);
 
-    res.status(200).json({
-      error: false,
-      requerants,
-    });
-  } catch (e) {
-    res.status(500).json({
-      error: true,
-      message: e.message,
-    });
-  }
-});
 
-const apurementPermis = asyncHandler(async (req, res) => {
-  try {
-    const permis = await Requerant.findByIdAndUpdate(req.params.id, {});
-  } catch (e) {}
-});
-
-module.exports = { addRequerant, getDetails };
+module.exports = { addRequerant, getDetails, getAllRequerants };

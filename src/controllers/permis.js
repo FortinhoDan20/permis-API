@@ -1,12 +1,12 @@
-const Permis = require('../models/permis')
+const Permit = require('../models/permis')
 const asyncHandler = require('express-async-handler')
 
 
 
-const checkPermis = asyncHandler(async(req, res) => {
+const checkPermit = asyncHandler(async(req, res) => {
 
     try {
-        const permis = await Permis.findOne({ numero: req.body.number}).populate(['requerant', 'categories'])
+        const permis = await Permit.findOne({ numero: req.body.number}).populate(['requerant', 'categories'])
 
         res.status(200).json({
             error: false,
@@ -23,11 +23,11 @@ const checkPermis = asyncHandler(async(req, res) => {
 
 const apurement = asyncHandler(async(req, res) => {
     try {
-        const permis = await Permis.findByIdAndUpdate(req.params.id, req.body, { new: true } )
+        const permit = await Permit.findByIdAndUpdate(req.params.id, req.body, { new: true } )
 
         res.status(200).json({
             error: false,
-            permis
+            permit
         })
 
     } catch (e) {
@@ -40,7 +40,7 @@ const apurement = asyncHandler(async(req, res) => {
 
 const getAllNP = asyncHandler(async(req, res) => {
     try {
-        const getAll = await Permis.find({ isPaid: false }).populate(['requerant', 'categories'])
+        const getAll = await Permit.find({ isPaid: false }).populate(['requerant', 'categories'])
 
         res.status(200).json({
             error: false,
@@ -54,9 +54,9 @@ const getAllNP = asyncHandler(async(req, res) => {
     }
 })
 
-const getAllPermis = asyncHandler(async(req, res) => {
+const getAllPermit = asyncHandler(async(req, res) => {
     try {
-        const getAll = await Permis.find({ isPaid: true }).populate(['requerant', 'categories'])
+        const getAll = await Permit.find({ isPaid: true }).populate(['requerant', 'categories'])
 
         res.status(200).json({
             error: false,
@@ -72,4 +72,4 @@ const getAllPermis = asyncHandler(async(req, res) => {
 
 
 
-module.exports = { checkPermis, apurement, getAllNP, getAllPermis }
+module.exports = { checkPermit, apurement, getAllNP, getAllPermit}
