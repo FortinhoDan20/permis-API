@@ -26,6 +26,7 @@ app.use('/api-user', require('./routes/user'))
 app.use('/api-category', require('./routes/category'))
 app.use('/api-requerant', require('./routes/requerant'))
 app.use('/api-specimen', require('./models/specimen'))
+app.use('/api-permit', require('./routes/permit'))
 
 
 
