@@ -44,7 +44,7 @@ const getAllNP = asyncHandler(async(req, res) => {
 
         res.status(200).json({
             error: false,
-            getAll
+            data: getAll
         })
     } catch (e) {
         res.status(500).json({
@@ -60,7 +60,7 @@ const getAllPermit = asyncHandler(async(req, res) => {
 
         res.status(200).json({
             error: false,
-            getAll
+            data: getAll
         })
     } catch (e) {
         res.status(500).json({
